@@ -256,23 +256,8 @@
       color:var(--text-primary);line-height:1.1}
     .readybanner__text{font-size:var(--text-sm);color:var(--text-secondary);margin-top:4px}
 
-    .adminbar{background:var(--neutral-900);color:var(--neutral-50)}
-    .adminbar__inner{max-width:var(--container-wide);margin:0 auto;padding:10px var(--space-7);
-      display:flex;align-items:center;gap:var(--space-4);font-size:var(--text-sm)}
-    .adminbar__dot{width:8px;height:8px;border-radius:50%;background:var(--amber-500);flex:none;
-      box-shadow:0 0 0 4px color-mix(in oklch,var(--amber-500) 25%,transparent)}
-    .adminbar__title{font-weight:var(--weight-semibold);white-space:nowrap}
-    .adminbar__hint{color:rgba(255,255,255,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .adminbar__spacer{flex:1}
-    .adminbar button{color:var(--neutral-50)}
-    .editzone{border:1.5px dashed var(--accent-border);border-radius:var(--radius-md);padding:var(--space-4);
-      background:color-mix(in oklch,var(--clay-50) 50%,transparent);display:flex;flex-direction:column;gap:var(--space-3)}
-    .editzone__label{font-size:var(--text-xs);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-caps);
-      text-transform:uppercase;color:var(--accent-pressed);display:flex;align-items:center;gap:6px}
-    .editzone__label svg{width:13px;height:13px}
-    .linkedit{display:flex;gap:var(--space-2);align-items:center}
 
-    .overlay{position:fixed;inset:0;z-index:var(--z-modal);background:rgba(20,20,19,.42);
+.overlay{position:fixed;inset:0;z-index:var(--z-modal);background:rgba(20,20,19,.42);
       backdrop-filter:blur(3px);display:grid;place-items:center;padding:var(--space-6);
       animation:fade var(--duration-normal) var(--ease-out)}
     @keyframes fade{from{opacity:0}}
@@ -485,7 +470,7 @@
     ];
 
     /* ── PERSISTENCE ── */
-    const LS = {os:'prep.os',done:'prep.done',overrides:'prep.overrides',admin:'prep.admin'};
+    const LS = {os:'prep.os',done:'prep.done'};
     const load = (k,fb) => { try{const v=localStorage.getItem(k);return v==null?fb:JSON.parse(v);}catch{return fb;} };
     const save = (k,v) => { try{localStorage.setItem(k,JSON.stringify(v));}catch{} };
 
@@ -493,11 +478,6 @@
     const pick = (field, os) => {
       if(field&&typeof field==='object'&&!Array.isArray(field)&&('win' in field||'mac' in field)) return field[os];
       return field;
-    };
-    const resolve = (step,fieldKey,os,overrides) => {
-      const ov = overrides[step.id];
-      if(ov){ const k=step.perOS?`${fieldKey}.${os}`:fieldKey; if(k in ov) return ov[k]; }
-      return pick(step[fieldKey],os);
     };
 
     /* ── INLINE RENDER ── */
@@ -677,7 +657,7 @@
     }
 
     /* ── TOP BAR ── */
-    function TopBar({os,setOs,pct,doneCount,total,onFaq,admin,setAdmin,onReset}){
+    function TopBar({os,setOs,pct,doneCount,total,onFaq,onReset}){
       return(
         <header className="topbar">
           <div className="topbar__inner">
@@ -698,7 +678,6 @@
                 ))}
               </div>
               <Btn variant="ghost" size="sm" iconLeft={I.help} onClick={onFaq}>Частые проблемы</Btn>
-              <IconBtn variant={admin?'solid':''} onClick={()=>setAdmin(a=>!a)} title="Режим администратора">{I.gear}</IconBtn>
               <IconBtn onClick={onReset} title="Сбросить прогресс">{I.reset}</IconBtn>
             </div>
           </div>
@@ -731,37 +710,11 @@
       );
     }
 
-    /* ── ADMIN EDIT ── */
-    function AdminEdit({step,os,overrides,setOverrides}){
-      const key=f=>step.perOS?`${f}.${os}`:f;
-      const get=f=>resolve(step,f,os,overrides);
-      const set=(f,val)=>setOverrides(p=>({...p,[step.id]:{...(p[step.id]||{}),[key(f)]:val}}));
-      const links=get('links')||[];
-      return(
-        <div className="editzone">
-          <div className="editzone__label">{I.edit} Редактирование · {step.perOS?OS[os].name:'все системы'}</div>
-          <Field label="Текст инструкции" multiline rows={6} value={get('instructions')||''} onChange={e=>set('instructions',e.target.value)}/>
-          <div>
-            <div className="cds-label" style={{marginBottom:8}}>Кнопки-ссылки</div>
-            <div style={{display:'flex',flexDirection:'column',gap:8}}>
-              {links.map((l,idx)=>(
-                <div className="linkedit" key={idx}>
-                  <input className="cds-input" placeholder="Текст" value={l.label} onChange={e=>set('links',links.map((x,i)=>i===idx?{...x,label:e.target.value}:x))} style={{maxWidth:180}}/>
-                  <input className="cds-input" placeholder="https://…" value={l.url} onChange={e=>set('links',links.map((x,i)=>i===idx?{...x,url:e.target.value}:x))}/>
-                  <IconBtn onClick={()=>set('links',links.filter((_,i)=>i!==idx))}>{I.x}</IconBtn>
-                </div>
-              ))}
-              <Btn variant="secondary" size="sm" onClick={()=>set('links',[...links,{label:'Новая ссылка',url:'',primary:links.length===0}])}>+ Добавить кнопку</Btn>
-            </div>
-          </div>
-        </div>
-      );
-    }
 
-    /* ── STEP VIEW ── */
-    function StepView({step,os,overrides,setOverrides,admin,done,toggleDone,onPrev,onNext,isFirst,onHelp}){
-      const instructions=resolve(step,'instructions',os,overrides);
-      const links=resolve(step,'links',os,overrides)||[];
+/* ── STEP VIEW ── */
+    function StepView({step,os,done,toggleDone,onPrev,onNext,isFirst,onHelp}){
+      const instructions=pick(step.instructions,os);
+      const links=pick(step.links,os)||[];
       const screenshots=(step.perOS?pick(step.screenshots,os):step.screenshots)||[];
       const captions=(step.perOS?pick(step.screenshotCaptions,os):step.screenshotCaptions)||[];
       const isDone=!!done[step.id];
@@ -783,7 +736,6 @@
                 <InstructionsWithScreenshots text={instructions} screenshots={screenshots} captions={captions}/>
               </div>
             )}
-            {admin&&<AdminEdit step={step} os={os} overrides={overrides} setOverrides={setOverrides}/>}
             {isDone&&<div className="donebar">{I.checkBold} Этот шаг отмечен как выполненный. Можно переходить дальше.</div>}
             <div className="actions">
               {links.filter(l=>l.url||admin).map((l,i)=>(
@@ -907,16 +859,12 @@
     function App(){
       const [os,setOsState]=useState(()=>load(LS.os,null));
       const [done,setDone]=useState(()=>load(LS.done,{}));
-      const [overrides,setOverrides]=useState(()=>load(LS.overrides,{}));
-      const [admin,setAdmin]=useState(()=>load(LS.admin,false));
       const [current,setCurrent]=useState(0);
       const [faqOpen,setFaqOpen]=useState(false);
       const [helpStep,setHelpStep]=useState(undefined);
       const [toastNode,toast]=useToast();
 
       useEffect(()=>{save(LS.done,done);},[done]);
-      useEffect(()=>{save(LS.overrides,overrides);},[overrides]);
-      useEffect(()=>{save(LS.admin,admin);},[admin]);
       useEffect(()=>{window.scrollTo({top:0,behavior:'smooth'});},[current]);
 
       const setOs=v=>{setOsState(v);save(LS.os,v);};
@@ -946,26 +894,14 @@
 
       return(
         <div className="app">
-          {admin&&(
-            <div className="adminbar">
-              <div className="adminbar__inner">
-                <span className="adminbar__dot"/>
-                <span className="adminbar__title">Режим администратора</span>
-                <span className="adminbar__hint">Меняйте ссылки и тексты — всё сохраняется в этом браузере</span>
-                <span className="adminbar__spacer"/>
-                <Btn variant="ghost" size="sm" onClick={()=>{if(confirm('Сбросить все правки?')){setOverrides({});toast('Контент сброшен');}}}>Сбросить правки</Btn>
-                <Btn variant="ghost" size="sm" iconLeft={I.x} onClick={()=>setAdmin(false)}>Выйти</Btn>
-              </div>
-            </div>
-          )}
           <TopBar os={os} setOs={setOs} pct={pct} doneCount={doneCount} total={total}
-            onFaq={()=>setFaqOpen(true)} admin={admin} setAdmin={setAdmin} onReset={resetAll}/>
+            onFaq={()=>setFaqOpen(true)} onReset={resetAll}/>
           <div className="layout">
             <Stepper steps={STEPS} current={current} setCurrent={setCurrent} done={done} allDone={allDone}/>
             <main className="main">
               {onFinal
                 ?<FinalView steps={STEPS} done={done} allDone={allDone} onReset={resetAll} goStep={setCurrent}/>
-                :<StepView step={step} os={os} overrides={overrides} setOverrides={setOverrides} admin={admin}
+                :<StepView step={step} os={os}
                     done={done} toggleDone={toggleDone}
                     onPrev={()=>setCurrent(c=>Math.max(0,c-1))}
                     onNext={()=>setCurrent(c=>Math.min(total,c+1))}
