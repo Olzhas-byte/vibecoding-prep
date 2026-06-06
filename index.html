@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Подготовка к обучению вайбкодингу</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* COLORS */
+    :root {
+      --clay-50:#FBF1EC;--clay-100:#F5DDD0;--clay-200:#ECC1AC;--clay-300:#E3A687;
+      --clay-400:#DE8B6C;--clay-500:#D97757;--clay-600:#C5633F;--clay-700:#A44C2E;--clay-800:#7E3A24;
+      --neutral-0:#FFFFFF;--neutral-50:#FAF9F5;--neutral-100:#F0EEE6;--neutral-150:#E9E6DC;
+      --neutral-200:#DDD9CC;--neutral-300:#C6C1AF;--neutral-400:#A8A290;--neutral-500:#87826F;
+      --neutral-600:#6A6657;--neutral-700:#4C4940;--neutral-800:#2B2A25;--neutral-900:#141413;
+      --green-500:#5B7F63;--green-50:#EBF1EB;--amber-500:#C2912F;--amber-50:#F8F0DC;
+      --red-500:#BE4B3B;--red-50:#F8E7E3;--blue-500:#5B7B9A;--blue-50:#E7EDF2;
+      --surface-canvas:var(--neutral-100);--surface-default:var(--neutral-50);
+      --surface-raised:var(--neutral-0);--surface-sunken:var(--neutral-150);
+      --text-primary:var(--neutral-900);--text-secondary:var(--neutral-600);
+      --text-muted:var(--neutral-500);--text-disabled:var(--neutral-400);--text-on-accent:#FFFFFF;
+      --border-subtle:var(--neutral-150);--border-default:var(--neutral-200);--border-strong:var(--neutral-300);
+      --accent:var(--clay-500);--accent-hover:var(--clay-600);--accent-pressed:var(--clay-700);
+      --accent-subtle:var(--clay-50);--accent-border:var(--clay-200);--link:var(--clay-700);
+      --focus-ring:color-mix(in oklch,var(--clay-500) 45%,transparent);
+      --success:var(--green-500);--success-bg:var(--green-50);
+      --warning:var(--amber-500);--warning-bg:var(--amber-50);
+      --danger:var(--red-500);--danger-bg:var(--red-50);
+    }
+    /* TYPOGRAPHY */
+    :root {
+      --font-sans:'Hanken Grotesk',ui-sans-serif,system-ui,-apple-system,sans-serif;
+      --font-serif:'Newsreader',Georgia,serif;
+      --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+      --text-2xs:11px;--text-xs:12px;--text-sm:14px;--text-base:16px;--text-md:18px;
+      --text-lg:20px;--text-xl:24px;--text-2xl:30px;--text-3xl:38px;--text-5xl:60px;
+      --weight-light:300;--weight-regular:400;--weight-medium:500;--weight-semibold:600;--weight-bold:700;
+      --leading-tight:1.08;--leading-snug:1.22;--leading-normal:1.5;--leading-relaxed:1.65;
+      --tracking-tight:-0.02em;--tracking-caps:0.08em;
+      --display-font:var(--font-serif);
+    }
+    /* SPACING / RADII / SHADOWS / MOTION */
+    :root {
+      --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;
+      --space-6:24px;--space-7:32px;--space-8:40px;--space-9:48px;--space-12:96px;
+      --radius-xs:4px;--radius-sm:8px;--radius-md:12px;--radius-lg:16px;
+      --radius-xl:24px;--radius-pill:999px;
+      --shadow-xs:0 1px 2px rgba(20,20,19,.05);
+      --shadow-sm:0 1px 3px rgba(20,20,19,.06),0 1px 2px rgba(20,20,19,.04);
+      --shadow-md:0 4px 14px rgba(20,20,19,.07),0 2px 4px rgba(20,20,19,.04);
+      --shadow-lg:0 14px 36px rgba(20,20,19,.10),0 4px 10px rgba(20,20,19,.05);
+      --shadow-xl:0 28px 64px rgba(20,20,19,.14);
+      --shadow-focus:0 0 0 3px var(--focus-ring);
+      --container-wide:1280px;
+      --ease-standard:cubic-bezier(.32,.72,0,1);--ease-out:cubic-bezier(.16,1,.3,1);
+      --duration-fast:120ms;--duration-normal:200ms;--duration-slow:360ms;
+      --z-sticky:100;--z-modal:1000;--z-toast:1500;
+    }
+    /* BASE */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{background:var(--surface-canvas);color:var(--text-primary);font-family:var(--font-sans);
+      font-size:var(--text-base);line-height:var(--leading-normal);-webkit-font-smoothing:antialiased}
+    h1,h2,h3,h4,h5,h6{margin:0;line-height:var(--leading-snug)}
+    p{margin:0}
+    a{color:var(--link);text-underline-offset:2px}
+    ::selection{background:var(--clay-100);color:var(--neutral-900)}
+    :focus-visible{outline:none;box-shadow:var(--shadow-focus);border-radius:var(--radius-xs)}
+    button{font-family:var(--font-sans)}
+    #root{min-height:100%}
+    ::-webkit-scrollbar{width:10px;height:10px}
+    ::-webkit-scrollbar-thumb{background:var(--neutral-300);border-radius:99px;border:3px solid var(--surface-canvas)}
+
+    /* COMPONENT STYLES */
+    .cds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-medium);
+      line-height:1;padding:0 16px;height:38px;border-radius:var(--radius-pill);
+      border:1px solid transparent;cursor:pointer;white-space:nowrap;
+      transition:background var(--duration-fast),border-color var(--duration-fast),color var(--duration-fast);
+      -webkit-user-select:none;user-select:none}
+    .cds-btn:active{transform:translateY(.5px) scale(.99)}
+    .cds-btn:focus-visible{outline:none;box-shadow:var(--shadow-focus)}
+    .cds-btn--full{width:100%}
+    .cds-btn--sm{height:30px;font-size:var(--text-xs);padding:0 12px;gap:6px}
+    .cds-btn--primary{background:var(--accent);color:var(--text-on-accent)}
+    .cds-btn--primary:hover{background:var(--accent-hover)}
+    .cds-btn--secondary{background:var(--surface-raised);color:var(--text-primary);border-color:var(--border-strong)}
+    .cds-btn--secondary:hover{background:var(--neutral-50);border-color:var(--neutral-400)}
+    .cds-btn--ghost{background:transparent;color:var(--text-secondary)}
+    .cds-btn--ghost:hover{background:color-mix(in oklch,var(--neutral-900) 6%,transparent);color:var(--text-primary)}
+    .cds-btn:disabled{opacity:.45;cursor:not-allowed;pointer-events:none}
+    .cds-btn svg{width:16px;height:16px;flex:none}
+    .cds-btn--sm svg{width:14px;height:14px}
+
+    .cds-icon-btn{display:inline-flex;align-items:center;justify-content:center;
+      width:38px;height:38px;border-radius:var(--radius-md);border:1px solid transparent;
+      background:transparent;color:var(--text-secondary);cursor:pointer;
+      transition:background var(--duration-fast),color var(--duration-fast)}
+    .cds-icon-btn:hover{background:color-mix(in oklch,var(--neutral-900) 6%,transparent);color:var(--text-primary)}
+    .cds-icon-btn--solid{background:var(--accent);color:#fff}
+    .cds-icon-btn--solid:hover{background:var(--accent-hover)}
+    .cds-icon-btn svg{width:18px;height:18px}
+
+    .cds-badge{display:inline-flex;align-items:center;gap:5px;font-size:var(--text-xs);
+      font-weight:var(--weight-medium);padding:4px 9px;border-radius:var(--radius-pill);
+      border:1px solid transparent;white-space:nowrap}
+    .cds-badge svg{width:12px;height:12px}
+    .cds-badge--neutral{background:var(--neutral-150);color:var(--text-secondary)}
+    .cds-badge--success{background:var(--success-bg);color:var(--success)}
+
+    .cds-field{display:flex;flex-direction:column;gap:6px}
+    .cds-label{font-size:var(--text-sm);font-weight:var(--weight-medium);color:var(--text-primary)}
+    .cds-label__hint{font-weight:var(--weight-regular);color:var(--text-muted);margin-left:6px}
+    .cds-input,.cds-textarea{font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary);
+      background:var(--surface-raised);border:1px solid var(--border-default);
+      border-radius:var(--radius-md);padding:0 12px;height:40px;width:100%}
+    .cds-textarea{height:auto;padding:10px 12px;line-height:1.5;resize:vertical;min-height:88px}
+    .cds-input::placeholder,.cds-textarea::placeholder{color:var(--text-muted)}
+    .cds-input:hover,.cds-textarea:hover{border-color:var(--border-strong)}
+    .cds-input:focus,.cds-textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--focus-ring)}
+
+    /* APP LAYOUT */
+    .app{min-height:100vh;display:flex;flex-direction:column}
+    .topbar{position:sticky;top:0;z-index:var(--z-sticky);
+      background:color-mix(in oklch,var(--surface-default) 88%,transparent);
+      backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--border-subtle)}
+    .topbar__inner{max-width:var(--container-wide);margin:0 auto;padding:0 var(--space-7);height:64px;
+      display:flex;align-items:center;gap:var(--space-5)}
+    .brand{display:flex;align-items:center;gap:11px;flex:none}
+    .brand__name{font-size:var(--text-md);font-weight:var(--weight-semibold);letter-spacing:-.01em}
+    .brand__name span{color:var(--text-muted);font-weight:var(--weight-regular)}
+    .topbar__progress{flex:1;display:flex;align-items:center;gap:var(--space-4);min-width:0;max-width:460px}
+    .miniprog{flex:1;height:7px;border-radius:99px;background:var(--neutral-200);overflow:hidden;min-width:80px}
+    .miniprog__fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--clay-400),var(--clay-600));
+      transition:width var(--duration-slow) var(--ease-out)}
+    .miniprog__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-secondary);
+      font-variant-numeric:tabular-nums;flex:none;white-space:nowrap}
+    .topbar__actions{display:flex;align-items:center;gap:var(--space-2);flex:none}
+
+    .osseg{display:inline-flex;gap:2px;padding:3px;background:var(--neutral-150);border-radius:var(--radius-pill)}
+    .osseg__btn{display:inline-flex;align-items:center;gap:6px;border:none;cursor:pointer;background:transparent;
+      color:var(--text-secondary);font-size:var(--text-sm);font-weight:var(--weight-medium);
+      padding:5px 13px;border-radius:var(--radius-pill);transition:background var(--duration-fast),color var(--duration-fast)}
+    .osseg__btn:hover{color:var(--text-primary)}
+    .osseg__btn[aria-pressed="true"]{background:var(--surface-raised);color:var(--text-primary);box-shadow:var(--shadow-xs)}
+    .osseg__btn svg{width:15px;height:15px}
+
+    .layout{max-width:var(--container-wide);margin:0 auto;width:100%;
+      padding:var(--space-8) var(--space-7) var(--space-12);
+      display:grid;grid-template-columns:300px 1fr;gap:var(--space-9);align-items:start}
+    @media(max-width:940px){.layout{grid-template-columns:1fr;gap:var(--space-7)}}
+
+    .stepper{position:sticky;top:88px;display:flex;flex-direction:column;gap:2px}
+    @media(max-width:940px){.stepper{position:static}}
+    .stepper__head{padding:0 var(--space-3) var(--space-3)}
+    .stepper__title{font-size:var(--text-xs);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-caps);
+      text-transform:uppercase;color:var(--text-muted)}
+    .steprow{display:flex;align-items:center;gap:var(--space-3);width:100%;text-align:left;
+      background:transparent;border:none;cursor:pointer;padding:9px var(--space-3);border-radius:var(--radius-md);
+      transition:background var(--duration-fast);position:relative}
+    .steprow:hover{background:color-mix(in oklch,var(--neutral-900) 4%,transparent)}
+    .steprow[aria-current="true"]{background:var(--accent-subtle)}
+    .steprow[aria-current="true"]::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:3px;
+      border-radius:99px;background:var(--accent)}
+    .steprow__dot{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+      font-size:var(--text-xs);font-weight:var(--weight-semibold);font-variant-numeric:tabular-nums;
+      background:var(--surface-raised);border:1.5px solid var(--border-strong);color:var(--text-secondary);
+      transition:all var(--duration-normal) var(--ease-standard)}
+    .steprow__dot svg{width:14px;height:14px}
+    .steprow[data-done="true"] .steprow__dot{background:var(--success);border-color:var(--success);color:#fff}
+    .steprow[aria-current="true"] .steprow__dot{border-color:var(--accent);color:var(--accent)}
+    .steprow__body{min-width:0;flex:1}
+    .steprow__label{display:block;font-size:var(--text-sm);font-weight:var(--weight-medium);color:var(--text-primary);
+      line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .steprow[data-done="true"] .steprow__label{color:var(--text-secondary)}
+    .steprow__meta{display:block;font-size:var(--text-2xs);color:var(--text-muted);margin-top:1px;white-space:nowrap}
+    .steprow--final .steprow__dot{border-style:dashed}
+    .steprow--final[data-ready="true"] .steprow__dot{background:var(--accent);border-color:var(--accent);border-style:solid;color:#fff}
+
+    .main{min-width:0;max-width:760px}
+    .stepcard{background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-xl);
+      box-shadow:var(--shadow-md);overflow:hidden}
+    .stepcard__head{padding:var(--space-8) var(--space-8) var(--space-6)}
+    .stepcard__eyebrow{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-4);flex-wrap:wrap}
+    .eyebrow-num{font-size:var(--text-xs);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-caps);
+      text-transform:uppercase;color:var(--accent);font-variant-numeric:tabular-nums;white-space:nowrap}
+    .stepcard__title{font-family:var(--display-font);font-weight:var(--weight-regular);letter-spacing:var(--tracking-tight);
+      font-size:var(--text-3xl);line-height:var(--leading-tight);color:var(--text-primary)}
+    .stepcard__lede{margin-top:var(--space-4);font-size:var(--text-md);line-height:var(--leading-normal);
+      color:var(--text-secondary);max-width:56ch}
+    .stepcard__body{padding:0 var(--space-8) var(--space-8);display:flex;flex-direction:column;gap:var(--space-7)}
+
+    .block-label{font-size:var(--text-xs);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-caps);
+      text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-3)}
+
+    .prose{font-size:var(--text-base);line-height:var(--leading-relaxed);color:var(--text-secondary)}
+    .prose p{margin:0 0 var(--space-3)}
+    .prose p:last-child{margin-bottom:0}
+    .prose ol,.prose ul{margin:0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:var(--space-3)}
+    .prose li{display:flex;gap:var(--space-3);align-items:flex-start}
+    .li-num{flex:none;width:22px;height:22px;border-radius:50%;background:var(--accent-subtle);
+      color:var(--accent-pressed);font-size:var(--text-xs);font-weight:var(--weight-semibold);
+      display:grid;place-items:center;margin-top:2px;font-variant-numeric:tabular-nums}
+    .li-tick{flex:none;color:var(--accent);margin-top:3px}
+    .li-tick svg{width:16px;height:16px}
+
+    .step-item{display:flex;flex-direction:column;gap:var(--space-3)}
+    .step-item__row{display:flex;gap:var(--space-3);align-items:flex-start}
+    .step-img{border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border-subtle)}
+    .step-img img{width:100%;height:auto;display:block}
+    .step-img__cap{padding:var(--space-3);background:var(--surface-default);font-size:var(--text-sm);color:var(--text-secondary)}
+
+    .actions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-3);padding-top:var(--space-2)}
+    .actions__spacer{flex:1}
+
+    .cardfoot{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);
+      border-top:1px solid var(--border-subtle);padding:var(--space-5) var(--space-8);background:var(--surface-default)}
+    .cardfoot__nav{display:flex;gap:var(--space-2)}
+    .helplink{display:inline-flex;align-items:center;gap:7px;background:none;border:none;cursor:pointer;
+      font-size:var(--text-sm);font-weight:var(--weight-medium);color:var(--text-muted);padding:6px 4px;
+      transition:color var(--duration-fast)}
+    .helplink:hover{color:var(--danger)}
+    .helplink svg{width:16px;height:16px}
+
+    .donebar{display:flex;align-items:center;gap:var(--space-3);background:var(--success-bg);
+      color:var(--success);font-size:var(--text-sm);font-weight:var(--weight-medium);
+      padding:var(--space-3) var(--space-5);border-radius:var(--radius-md);
+      border:1px solid color-mix(in oklch,var(--success) 22%,transparent)}
+    .donebar svg{width:18px;height:18px;flex:none}
+
+    .finalwrap{display:flex;flex-direction:column;gap:var(--space-6)}
+    .checklist{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3)}
+    @media(max-width:560px){.checklist{grid-template-columns:1fr}}
+    .checkitem{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-4) var(--space-5);
+      border:1px solid var(--border-subtle);border-radius:var(--radius-md);background:var(--surface-default);
+      transition:all var(--duration-normal) var(--ease-standard);cursor:pointer;text-align:left}
+    .checkitem[data-done="true"]{background:var(--success-bg);border-color:color-mix(in oklch,var(--success) 20%,transparent)}
+    .checkitem__ic{width:26px;height:26px;border-radius:50%;flex:none;display:grid;place-items:center;
+      border:1.5px solid var(--border-strong);color:var(--text-disabled)}
+    .checkitem__ic svg{width:15px;height:15px}
+    .checkitem[data-done="true"] .checkitem__ic{background:var(--success);border-color:var(--success);color:#fff}
+    .checkitem__label{font-size:var(--text-sm);font-weight:var(--weight-medium);color:var(--text-primary);flex:1}
+    .checkitem__sub{font-size:var(--text-2xs);color:var(--text-muted)}
+
+    .readybanner{display:flex;align-items:center;gap:var(--space-5);padding:var(--space-7);
+      border-radius:var(--radius-lg);background:linear-gradient(135deg,var(--clay-50),var(--neutral-50));
+      border:1px solid var(--accent-border)}
+    .readybanner--locked{background:var(--surface-default);border-color:var(--border-default)}
+    .readybanner__ic{width:56px;height:56px;border-radius:50%;flex:none;display:grid;place-items:center;
+      background:var(--accent);color:#fff;box-shadow:var(--shadow-md)}
+    .readybanner--locked .readybanner__ic{background:var(--neutral-300);box-shadow:none}
+    .readybanner__ic svg{width:28px;height:28px}
+    .readybanner__title{font-family:var(--display-font);font-size:var(--text-2xl);letter-spacing:var(--tracking-tight);
+      color:var(--text-primary);line-height:1.1}
+    .readybanner__text{font-size:var(--text-sm);color:var(--text-secondary);margin-top:4px}
+
+    .adminbar{background:var(--neutral-900);color:var(--neutral-50)}
+    .adminbar__inner{max-width:var(--container-wide);margin:0 auto;padding:10px var(--space-7);
+      display:flex;align-items:center;gap:var(--space-4);font-size:var(--text-sm)}
+    .adminbar__dot{width:8px;height:8px;border-radius:50%;background:var(--amber-500);flex:none;
+      box-shadow:0 0 0 4px color-mix(in oklch,var(--amber-500) 25%,transparent)}
+    .adminbar__title{font-weight:var(--weight-semibold);white-space:nowrap}
+    .adminbar__hint{color:rgba(255,255,255,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .adminbar__spacer{flex:1}
+    .adminbar button{color:var(--neutral-50)}
+    .editzone{border:1.5px dashed var(--accent-border);border-radius:var(--radius-md);padding:var(--space-4);
+      background:color-mix(in oklch,var(--clay-50) 50%,transparent);display:flex;flex-direction:column;gap:var(--space-3)}
+    .editzone__label{font-size:var(--text-xs);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-caps);
+      text-transform:uppercase;color:var(--accent-pressed);display:flex;align-items:center;gap:6px}
+    .editzone__label svg{width:13px;height:13px}
+    .linkedit{display:flex;gap:var(--space-2);align-items:center}
+
+    .overlay{position:fixed;inset:0;z-index:var(--z-modal);background:rgba(20,20,19,.42);
+      backdrop-filter:blur(3px);display:grid;place-items:center;padding:var(--space-6);
+      animation:fade var(--duration-normal) var(--ease-out)}
+    @keyframes fade{from{opacity:0}}
+    .modal{background:var(--surface-raised);border-radius:var(--radius-xl);box-shadow:var(--shadow-xl);
+      width:100%;max-width:520px;max-height:88vh;overflow:auto;animation:pop var(--duration-normal) var(--ease-out)}
+    .modal--wide{max-width:720px}
+    @keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98)}}
+    .modal__head{padding:var(--space-7) var(--space-7) var(--space-4);display:flex;align-items:flex-start;gap:var(--space-4)}
+    .modal__head-body{flex:1}
+    .modal__title{font-family:var(--display-font);font-size:var(--text-2xl);letter-spacing:var(--tracking-tight);color:var(--text-primary);line-height:1.1}
+    .modal__sub{font-size:var(--text-sm);color:var(--text-secondary);margin-top:6px}
+    .modal__body{padding:var(--space-3) var(--space-7) var(--space-7);display:flex;flex-direction:column;gap:var(--space-5)}
+    .modal__foot{display:flex;gap:var(--space-3);justify-content:flex-end;padding-top:var(--space-2)}
+    .modal__x{flex:none}
+
+    .faqlist{display:flex;flex-direction:column;gap:var(--space-3)}
+    .faqitem{border:1px solid var(--border-subtle);border-radius:var(--radius-md);background:var(--surface-default);overflow:hidden}
+    .faqitem__q{width:100%;display:flex;align-items:center;gap:var(--space-3);text-align:left;
+      background:none;border:none;cursor:pointer;padding:var(--space-5);font-size:var(--text-base);
+      font-weight:var(--weight-medium);color:var(--text-primary)}
+    .faqitem__q .chev{margin-left:auto;flex:none;color:var(--text-muted);transition:transform var(--duration-normal)}
+    .faqitem__q .chev svg{width:18px;height:18px}
+    .faqitem[data-open="true"] .chev{transform:rotate(180deg)}
+    .faqitem__a{padding:0 var(--space-5) var(--space-5) calc(var(--space-5) + 30px);font-size:var(--text-sm);
+      line-height:var(--leading-relaxed);color:var(--text-secondary)}
+    .faqitem__q .qic{width:22px;height:22px;border-radius:50%;background:var(--accent-subtle);color:var(--accent-pressed);
+      display:grid;place-items:center;flex:none;font-size:13px;font-weight:var(--weight-bold)}
+
+    .toast{position:fixed;bottom:var(--space-7);left:50%;transform:translateX(-50%);z-index:var(--z-toast);
+      background:var(--neutral-900);color:var(--neutral-50);padding:var(--space-3) var(--space-5);
+      border-radius:var(--radius-pill);font-size:var(--text-sm);font-weight:var(--weight-medium);
+      box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:8px;animation:toastin var(--duration-normal) var(--ease-out)}
+    .toast svg{width:16px;height:16px;color:var(--clay-300)}
+    @keyframes toastin{from{opacity:0;transform:translate(-50%,12px)}}
+
+    .picker{min-height:100vh;display:grid;place-items:center;padding:var(--space-7)}
+    .picker__inner{width:100%;max-width:720px;text-align:center}
+    .picker__mark{width:52px;height:52px;margin:0 auto var(--space-6);display:block}
+    .picker__eyebrow{font-size:var(--text-xs);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-caps);
+      text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-4)}
+    .picker__title{font-family:var(--display-font);font-weight:var(--weight-regular);letter-spacing:var(--tracking-tight);
+      font-size:var(--text-5xl);line-height:var(--leading-tight);color:var(--text-primary)}
+    .picker__lede{margin:var(--space-5) auto 0;max-width:52ch;font-size:var(--text-md);line-height:var(--leading-normal);color:var(--text-secondary)}
+    .picker__cards{margin-top:var(--space-9);display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5)}
+    @media(max-width:560px){.picker__cards{grid-template-columns:1fr}}
+    .oscard{background:var(--surface-raised);border:1px solid var(--border-default);border-radius:var(--radius-xl);
+      padding:var(--space-8) var(--space-6);cursor:pointer;transition:all var(--duration-normal) var(--ease-standard);
+      display:flex;flex-direction:column;align-items:center;gap:var(--space-4);box-shadow:var(--shadow-sm)}
+    .oscard:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--accent-border)}
+    .oscard__ic{width:64px;height:64px;color:var(--neutral-800)}
+    .oscard__ic svg{width:100%;height:100%}
+    .oscard__name{font-size:var(--text-xl);font-weight:var(--weight-semibold);color:var(--text-primary)}
+    .oscard__sub{font-size:var(--text-sm);color:var(--text-muted)}
+    .picker__foot{margin-top:var(--space-7);font-size:var(--text-sm);color:var(--text-muted)}
+    .hint-inline{font-size:var(--text-xs);color:var(--text-muted)}
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const { useState, useEffect, useCallback } = React;
+
+    /* ── ICONS ── */
+    const I = {
+      check:    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>,
+      checkBold:<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>,
+      external: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>,
+      download: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>,
+      copy:     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>,
+      help:     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>,
+      gear:     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 9H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>,
+      reset:    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>,
+      x:        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>,
+      arrowL:   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>,
+      arrowR:   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>,
+      chev:     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>,
+      edit:     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4Z"/></svg>,
+      sparkle:  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg>,
+      trophy:   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>,
+      lock:     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>,
+      key:      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></svg>,
+      send:     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7Z"/></svg>,
+      windows:  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5 10.5 4.4v7.1H3V5.5Zm0 13L10.5 19.6v-7H3v6Zm8.5 1.3L21 21V12.5h-9.5v7.3ZM11.5 4.2 21 3v8.5h-9.5V4.2Z"/></svg>,
+      apple:    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.03-2.92 2.38-4.32 2.49-4.39-1.36-1.99-3.47-2.26-4.22-2.29-1.8-.18-3.51 1.06-4.42 1.06-.91 0-2.32-1.03-3.81-1-1.96.03-3.77 1.14-4.78 2.89-2.04 3.54-.52 8.78 1.46 11.65.97 1.41 2.12 2.98 3.63 2.93 1.46-.06 2.01-.94 3.77-.94 1.76 0 2.26.94 3.81.91 1.57-.03 2.57-1.43 3.53-2.85 1.11-1.63 1.57-3.21 1.6-3.29-.04-.02-3.06-1.18-3.09-4.64ZM14.13 4.5c.8-.98 1.35-2.33 1.2-3.69-1.16.05-2.57.78-3.4 1.75-.74.86-1.4 2.24-1.22 3.56 1.3.1 2.62-.66 3.42-1.62Z"/></svg>,
+    };
+
+    const OS = {
+      win: { id:'win', name:'Windows', icon: I.windows },
+      mac: { id:'mac', name:'macOS',   icon: I.apple   },
+    };
+
+    /* ── STEP DATA ── */
+    const STEPS = [
+      {
+        id:'google', num:0, perOS:false, icon:I.external,
+        title:'Убедись, что есть Google-аккаунт',
+        check:'Google аккаунт',
+        lede:'Для регистрации во всех сервисах нам понадобится Google-аккаунт (почта Gmail).',
+        instructions:'1. Зайди на `mail.google.com` и проверь, что твой аккаунт работает.\n2. Если аккаунта нет — перейди на `accounts.google.com/signup` и создай новый.\n3. Введи своё имя и фамилию.\n4. Выбери желаемое имя пользователя (это будет твой будущий email вида `имя@gmail.com`). Если выбранное имя занято, система предложит добавить цифры (например, `имя2024@gmail.com`).\n5. Придумай надёжный пароль и запиши его в безопасное место.\n6. Google попросит проверить, что ты не робот. Можешь отсканировать QR-код телефоном или ввести номер телефона и получить код по SMS.\n7. После проверки введи полученный код.\n8. Добавь резервный адрес электронной почты. Это может быть твоя дополнительная почта или почта кого-то из близких — на случай, если ты забудешь пароль и захочешь восстановить доступ к аккаунту.\n9. Прими все соглашения (чекбокс) и заверши регистрацию.\n10. Поздравляем! Теперь у тебя есть Gmail и Google-аккаунт, готовый к использованию.',
+        screenshots:['images/google-01-login.png','images/google-02-signup.png','images/google-03-email.png','images/google-04-phone-qr.png','images/google-05-phone-number.png','images/google-06-sms-code.png','images/google-07-backup-email.png'],
+        screenshotCaptions:['Экран входа в Gmail','Форма создания аккаунта Google','Выбор имени пользователя (будущий email)','Проверка через QR-код (отсканируй телефоном)','Или введи номер телефона для получения SMS','Введи код из SMS для подтверждения','Добавь резервный email для восстановления доступа'],
+        links:[{label:'Проверить Gmail',url:'https://mail.google.com',primary:true},{label:'Создать новый аккаунт',url:'https://accounts.google.com/signup',primary:false}],
+      },
+      {
+        id:'claude', num:1, perOS:false, icon:I.sparkle,
+        title:'Регистрируемся в Claude',
+        check:'Claude аккаунт',
+        lede:'Claude — это AI, с которым мы будем работать. Создай аккаунт через Google — это самый быстрый способ, не нужно придумывать отдельный пароль.',
+        instructions:"1. В браузере найди в поиске «claude ai» или открой сайт `claude.ai` напрямую. В результатах поиска нажми «Claude: Sign in».\n2. На главной странице нажми кнопку «Continue with Google» — она обведена красным на скриншоте.\n3. Появится окно выбора аккаунта Google. Кликни на свой аккаунт.\n4. Google спросит разрешение передать имя и email в Claude. Нажми «Продолжить».\n5. Claude покажет форму с условиями использования. Поставь галочку «I agree to Anthropic's Consumer Terms and Acceptable Use Policy...»\n6. Нажми «Create account» — аккаунт создан, добро пожаловать в Claude!",
+        screenshots:['images/claude-01-search.png','images/claude-02-login.png','images/claude-03-account.png','images/claude-04-allow.png','images/claude-05-terms.png','images/claude-06-agree.png'],
+        screenshotCaptions:['Результат поиска — нажми «Claude: Sign in»','Кнопка «Continue with Google» на главной странице Claude','Выбери свой Google-аккаунт','Разреши Claude доступ к имени и email — нажми «Продолжить»','Поставь галочку с условиями использования','Нажми «Create account» — готово!'],
+        links:[{label:'Перейти на Claude',url:'https://claude.ai',primary:true}],
+      },
+      {
+        id:'claude-pro', num:2, perOS:false, icon:I.sparkle,
+        title:'Оформляем подписку Claude Pro',
+        check:'Claude Pro ($20/месяц)',
+        lede:'Подписка Claude Pro не входит в стоимость практикума — её нужно оплатить самостоятельно. Без Pro Claude быстро исчерпывает лимит сообщений и работать становится неудобно.',
+        instructions:'1. После регистрации Claude покажет страницу с тарифами. Нам нужен план Pro. Убедись, что в его карточке выбрана вкладка «Monthly» (ежемесячно), а не «Yearly».\n2. Нажми переключатель «Monthly» (обведён красным на скриншоте) — цена должна показать $20/месяц. Нажми кнопку «Get Pro plan».\n3. Проверь детали заказа: выбрана оплата Monthly, сумма — $20 USD/month.\n4. Введи данные для оплаты: полное имя, страна и город. Затем введи номер карты, срок действия и CVC. Поставь галочку согласия с условиями и нажми «Subscribe».',
+        screenshots:['images/claude-pro-01-plans.png','images/claude-pro-02-monthly.png','images/claude-pro-03-order.png','images/claude-pro-04-payment.png'],
+        screenshotCaptions:['Страница тарифов — выбери вкладку «Monthly» в карточке Pro','Убедись, что цена $20/month, и нажми «Get Pro plan»','Проверь детали заказа — должно быть Monthly, $20 USD','Введи данные карты и нажми «Subscribe»'],
+        links:[{label:'Перейти на Claude',url:'https://claude.ai',primary:true}],
+      },
+      {
+        id:'claude-desktop', num:3, perOS:true, icon:I.download,
+        title:'Скачиваем Claude Desktop',
+        check:'Claude Desktop + папка GrowVibeProjects',
+        lede:'Десктопное приложение мощнее веб-версии — Claude может работать с твоими файлами и папками напрямую.',
+        instructions:{
+          win:'1. После оплаты Claude предложит скачать приложение. Нажми «Download for Windows» (обведено красным на скриншоте).\n2. Появится предупреждение безопасности Windows. Нажми «Запустить» — файл безопасен, он от Anthropic, PBC.\n3. Начнётся установка Claude. Дождись её завершения.\n4. После установки откроется приложение Claude for Windows. Нажми «Get Started».\n5. Выбери «Continue with Google» (обведено красным) и войди через свой Google-аккаунт из шага 0.\n6. Создай рабочую папку: кликни правой кнопкой мыши на рабочем столе или в Проводнике → «Создать» → «Папку». Назови её точно: `GrowVibeProjects` (без пробелов и кириллицы).\n7. В Claude переключись на вкладку «Code» (обведено красным вверху) и нажми «Select folder...» (обведено красным внизу).\n8. Выбери папку GrowVibeProjects и нажми «Trust Workspace» в появившемся окне. Без этого Claude не сможет сохранять файлы.',
+          mac:'1. После оплаты Claude предложит скачать приложение. Нажми «Download for macOS» (обведено красным на скриншоте).\n2. Claude покажет три шага установки: открой файл `Claude.dmg` из папки Загрузки, перетащи иконку Claude в папку Программы (Applications), затем открой Claude из Программ или Launchpad.\n3. После запуска выбери «Continue with Google» (обведено красным) и войди через свой Google-аккаунт из шага 0.\n4. Открой Finder → перейди в Documents или Desktop → кликни правой кнопкой мыши → «Новая папка». Назови её точно: `GrowVibeProjects` (без пробелов и кириллицы).\n5. В Claude переключись на вкладку «Code» (обведено красным вверху) и нажми «Select folder...» (обведено красным внизу). Выбери папку GrowVibeProjects.\n6. В появившемся окне «Trust this workspace?» нажми «Trust Workspace» (обведено красным). Без этого Claude не сможет сохранять файлы.',
+        },
+        screenshots:{
+          win:['images/claude-desktop-win-01-download.png','images/claude-desktop-win-02-security.png','images/claude-desktop-win-03-installing.png','images/claude-desktop-win-04-getstarted.png','images/claude-desktop-win-05-signin.png','images/claude-desktop-win-06-folder.png','images/claude-desktop-win-07-code.png','images/claude-desktop-win-08-trust.png'],
+          mac:['images/claude-desktop-mac-01-download.png','images/claude-desktop-mac-02-install.png','images/claude-desktop-mac-signin.png','images/claude-desktop-mac-03-folder.png','images/claude-desktop-mac-code.png','images/claude-desktop-mac-04-trust.png'],
+        },
+        screenshotCaptions:{
+          win:['Нажми «Download for Windows»','Нажми «Запустить» — файл от Anthropic, он безопасен','Дождись завершения установки','Нажми «Get Started»','Войди через «Continue with Google»','Создай папку и назови её GrowVibeProjects','Вкладка «Code» → кнопка «Select folder...»','Нажми «Trust Workspace» для разрешения доступа'],
+          mac:['Нажми «Download for macOS»','Три шага установки: Open → Install → Launch','Выбери «Continue with Google» и войди через Google-аккаунт','Создай папку и назови её GrowVibeProjects','Вкладка «Code» → кнопка «Select folder...»','Нажми «Trust Workspace» для разрешения доступа'],
+        },
+        links:{
+          win:[{label:'Скачать для Windows',url:'https://claude.ai/download',primary:true}],
+          mac:[{label:'Скачать для macOS',url:'https://claude.ai/download',primary:true}],
+        },
+      },
+      {
+        id:'github', num:4, perOS:false, icon:I.external,
+        title:'Регистрируемся на GitHub',
+        check:'GitHub аккаунт',
+        lede:'GitHub — облачное хранилище для кода и проектов. Claude будет сохранять туда всё, что мы создадим.',
+        instructions:'1. Перейди на `github.com`. Нажми кнопку «Sign up» в правом верхнем углу.\n2. GitHub покажет форму создания аккаунта. Введи свой email и нажми «Continue with Google» — так удобнее всего.\n3. Появится окно выбора Google-аккаунта. Кликни на свой аккаунт.\n4. Введи email от Google и нажми «Далее».\n5. Введи пароль от аккаунта Google и нажми «Далее».\n6. GitHub запросит разрешение на доступ через Google. Нажми «Продолжить».\n7. GitHub попросит выбрать username (логин). Введи латиницей без пробелов, например: `ivanov2025`. Этот username станет частью адреса твоих проектов: `github.com/ТВОЙ_ЛОГИН`.\n8. GitHub попросит пройти проверку. Нажми «Visual puzzle».\n9. Появится паззл: используй стрелки ← → чтобы выбрать картинку, где провода соединяются с совпадающими иконками. Нажми «Submit».\n10. Паззл может состоять из нескольких шагов — продолжай до конца, нажимая «Submit» на каждом.\n11. Аккаунт создан! Ты на главном экране GitHub (Dashboard). Можно закрыть приветственные подсказки.',
+        screenshots:['images/github-01-home.png','images/github-02-signup.png','images/github-03-google.png','images/github-04-email.png','images/github-05-password.png','images/github-06-allow.png','images/github-07-username.png','images/github-08-puzzle-start.png','images/github-09-puzzle1.png','images/github-10-puzzle2.png','images/github-11-dashboard.png'],
+        screenshotCaptions:['Нажми «Sign up» в правом верхнем углу','Форма регистрации — выбери «Continue with Google»','Выбери свой Google-аккаунт','Введи email и нажми «Далее»','Введи пароль и нажми «Далее»','Разреши GitHub доступ — нажми «Продолжить»','Введи username латиницей без пробелов','Нажми «Visual puzzle» для начала проверки','Выбери правильную картинку с помощью стрелок и нажми «Submit»','Продолжай паззл до конца — нажимай «Submit» на каждом шаге','Готово! Ты на Dashboard GitHub'],
+        links:[{label:'Перейти на GitHub',url:'https://github.com/signup',primary:true}],
+      },
+      {
+        id:'token', num:5, perOS:false, icon:I.key,
+        title:'Создаём GitHub токен для Claude',
+        check:'GitHub Token',
+        lede:'Токен — это специальный пароль, который ты дашь Claude, чтобы он мог сохранять проекты на GitHub. Без токена Claude не сможет загружать код.',
+        instructions:'1. Нажми на аватар (фото профиля) в правом верхнем углу GitHub. В меню выбери «Settings». Прокрути вниз до «Developer settings» (последний пункт в левом меню) → Personal access tokens → Tokens (classic) → Generate new token → Generate new token (classic).\n2. В поле «Note» введи название: `Claude`. В поле «Expiration» выбери «No expiration» — чтобы токен не истёк в неподходящий момент.\n3. Прокрути страницу вниз. Поставь галочку напротив «repo» — этого достаточно. Нажми зелёную кнопку «Generate token» внизу.\n4. Токен показывается ОДИН РАЗ! Скопируй его прямо сейчас — нажми кнопку копирования рядом с токеном. Сохрани токен в текстовом файле в папке GrowVibeProjects. Если закроешь страницу — придётся создавать новый.',
+        screenshots:['images/token-01-settings.png','images/token-02-name.png','images/token-03-repo.png','images/token-04-copy.png'],
+        screenshotCaptions:['Аватар → Settings → Developer settings → Tokens (classic) → Generate new token (classic)','Назови токен «Claude» и выбери «No expiration»','Отметь галочку «repo» и нажми «Generate token»','Скопируй токен сразу — он показывается только один раз!'],
+        links:[{label:'Открыть настройки токенов',url:'https://github.com/settings/tokens',primary:true}],
+      },
+      {
+        id:'token-desktop', num:6, perOS:false, icon:I.sparkle,
+        title:'Вставляем токен в Claude Desktop',
+        check:'GitHub токен в Claude',
+        lede:'Теперь нужно сказать Claude, какой у тебя GitHub-аккаунт. Для этого вставим токен прямо в чат.',
+        instructions:'1. Запусти приложение Claude Desktop (иконка в Launchpad, папке Программы или на рабочем столе). Открой папку GrowVibeProjects в Claude — нажми «Open Folder» или перетащи папку в окно Claude.\n2. В чате напиши следующее сообщение (вставь свой токен и логин вместо слов в скобках):\n\n`Привет! Вот мой GitHub токен: ВАШ_ТОКЕН Мой GitHub логин: ВАШ_ЛОГИН Запомни эти данные для работы.`\n\nClaude запомнит токен в рамках текущей сессии. Если откроешь новый чат — нужно будет вставить снова.\n3. Попроси Claude проверить соединение: `Проверь подключение к моему GitHub-аккаунту.` Если Claude ответит информацией о твоём аккаунте — всё работает.',
+        screenshots:[],
+        screenshotCaptions:[],
+        links:[],
+      },
+      {
+        id:'git', num:7, perOS:true, icon:I.download,
+        title:'Проверяем и устанавливаем Git',
+        check:'Git',
+        lede:'Git — система управления версиями. На Windows скачиваем, на macOS через Homebrew.',
+        instructions:{
+          win:'1. Нажми Win+R → введи `cmd` → нажми Enter. Откроется чёрное окно с курсором — это командная строка.\n2. Введи команду `git --version` и нажми Enter. Если видишь версию (например, `git version 2.x.x`) — Git уже установлен, шаги 3–5 пропускай!\n3. Если видишь ошибку `\'git\' is not recognized` — перейди на `git-scm.com` и нажми большую кнопку «Download for Windows». Скачается файл вида `Git-2.x.x-64-bit.exe` — открой его из папки Загрузки.\n4. Запустится мастер установки. На всех экранах просто нажимай «Next», ничего не меняй. В конце нажми «Finish». Установка займёт 1–2 минуты.\n5. Закрой командную строку и открой снова (Win+R → `cmd` → Enter). Введи `git --version` — должна появиться версия. Git установлен!',
+          mac:'1. Открой Терминал: нажми Cmd+Пробел → напиши «Terminal» → нажми Enter. Откроется тёмное окно с курсором.\n2. Для установки Git нам понадобится Homebrew. Открой [brew.sh](https://brew.sh/ru/) в браузере — скопируй команду установки, нажав иконку справа от неё.\n3. Вернись в Терминал. Вставь команду (Cmd+V) и нажми Enter.\n4. Терминал попросит пароль от твоего Mac. Введи его вслепую (символы не отображаются — это нормально!) и нажми Enter.\n5. Началась установка Homebrew — ждём 2–5 минут. Строки бегут — это нормально. Когда появится «Installation successful!» — готово.\n6. Теперь введи команду `brew install git` в Терминале и нажми Enter.\n7. Git устанавливается — дождись завершения (1–2 минуты).\n8. Готово! Проверь командой `git --version` — должна появиться версия.',
+        },
+        screenshots:{
+          win:[],
+          mac:['images/git-mac-01-terminal.png','images/git-mac-02-brew.png','images/git-mac-03-paste.png','images/git-mac-04-password.png','images/git-mac-05-installing.png','images/git-mac-06-brew-git1.png','images/git-mac-07-brew-git2.png','images/git-mac-08-installed.png'],
+        },
+        screenshotCaptions:{
+          win:[],
+          mac:['Открытый Терминал — тёмное окно с курсором','brew.sh — скопируй команду установки Homebrew','Вставь команду в Терминал (Cmd+V) и нажми Enter','Введи пароль от Mac вслепую и нажми Enter','Homebrew устанавливается — жди «Installation successful!»','Введи brew install git и нажми Enter','Git устанавливается — дождись завершения','Git успешно установлен!'],
+        },
+        links:{
+          win:[{label:'Скачать Git для Windows',url:'https://git-scm.com/download/win',primary:true}],
+          mac:[{label:'Homebrew (brew.sh)',url:'https://brew.sh/ru/',primary:true}],
+        },
+      },
+    ];
+
+    const FAQ = [
+      {q:'Не приходит письмо подтверждения от GitHub или Google',a:'Проверьте папку «Спам». Письмо может идти несколько минут. Если его нет — запросите отправку повторно.'},
+      {q:'Не проходит оплата Claude',a:'Убедитесь, что карта поддерживает международные платежи. Попробуйте другую карту или позже.'},
+      {q:'Windows не даёт установить программу («неизвестный издатель»)',a:'Нажмите «Подробнее» → «Выполнить в любом случае». Скачивайте только по ссылкам из этого мастера.'},
+      {q:'macOS пишет, что приложение нельзя открыть',a:'Откройте «Системные настройки → Конфиденциальность и безопасность» и нажмите «Открыть всё равно».'},
+      {q:'Я потерял GitHub токен',a:'Токен показывается один раз. Создайте новый (шаг 5) и удалите старый.'},
+      {q:'Я сбросил прогресс',a:'Прогресс хранится в браузере. Отметьте шаги заново — программы переустанавливать не нужно.'},
+    ];
+
+    /* ── PERSISTENCE ── */
+    const LS = {os:'prep.os',done:'prep.done',overrides:'prep.overrides',admin:'prep.admin'};
+    const load = (k,fb) => { try{const v=localStorage.getItem(k);return v==null?fb:JSON.parse(v);}catch{return fb;} };
+    const save = (k,v) => { try{localStorage.setItem(k,JSON.stringify(v));}catch{} };
+
+    /* ── FIELD HELPERS ── */
+    const pick = (field, os) => {
+      if(field&&typeof field==='object'&&!Array.isArray(field)&&('win' in field||'mac' in field)) return field[os];
+      return field;
+    };
+    const resolve = (step,fieldKey,os,overrides) => {
+      const ov = overrides[step.id];
+      if(ov){ const k=step.perOS?`${fieldKey}.${os}`:fieldKey; if(k in ov) return ov[k]; }
+      return pick(step[fieldKey],os);
+    };
+
+    /* ── INLINE RENDER ── */
+    const isUrlLike = s => /^https?:\/\//.test(s)||/^[a-z0-9][a-z0-9._-]*\.(com|ai|sh|org|io|net|ru|dev|app|scm|gov|edu)(\/.*)?$/i.test(s);
+
+    function InlineCode({ content }) {
+      const [copied,setCopied] = useState(false);
+      const isLong = content.length > 48;
+      const doCopy = e => {
+        e.preventDefault(); e.stopPropagation();
+        navigator.clipboard?.writeText(content);
+        setCopied(true); setTimeout(()=>setCopied(false),1600);
+      };
+      const btn = (
+        <button onClick={doCopy} title="Скопировать" style={{background:'none',border:'none',cursor:'pointer',padding:'0 0 0 6px',color:copied?'#4ade80':'rgba(255,255,255,.45)',lineHeight:1,display:'inline-flex',alignItems:'center',flexShrink:0}}>
+          {copied
+            ? <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            : <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>}
+        </button>
+      );
+      if (isLong) return (
+        <span style={{display:'flex',alignItems:'flex-start',gap:4,background:'var(--neutral-900)',border:'1px solid rgba(255,255,255,.12)',borderRadius:'var(--radius-xs)',padding:'8px 10px',fontFamily:'var(--font-mono)',fontSize:'.85em',color:'#e2e8f0',marginTop:6,marginBottom:2,wordBreak:'break-word',whiteSpace:'pre-wrap'}}>
+          <span style={{flex:1}}>{content}</span>{btn}
+        </span>
+      );
+      return (
+        <span style={{display:'inline-flex',alignItems:'center',gap:4,background:'var(--neutral-900)',border:'1px solid rgba(255,255,255,.12)',borderRadius:'var(--radius-xs)',padding:'2px 8px',fontFamily:'var(--font-mono)',fontSize:'.86em',color:'#e2e8f0',verticalAlign:'middle',whiteSpace:'nowrap'}}>
+          {content}{btn}
+        </span>
+      );
+    }
+
+    function renderInline(text) {
+      const parts=[]; const re=/(\[([^\]]+)\]\(([^)]+)\))|(`[^`]+`)|(\*\*[^*]+\*\*)/g;
+      let last=0,m,k=0;
+      while((m=re.exec(text))){
+        if(m.index>last) parts.push(text.slice(last,m.index));
+        if(m[1]){
+          const label=m[2],href=m[3],url=href.startsWith('http')?href:`https://${href}`;
+          parts.push(<a key={k++} href={url} target="_blank" rel="noopener noreferrer" style={{color:'var(--link)',textDecoration:'underline'}}>{label}</a>);
+        } else if(m[0].startsWith('`')){
+          const c=m[0].slice(1,-1);
+          if(isUrlLike(c)){const url=c.startsWith('http')?c:`https://${c}`;parts.push(<a key={k++} href={url} target="_blank" rel="noopener noreferrer" style={{color:'var(--link)',fontFamily:'var(--font-mono)',fontSize:'.88em',textDecoration:'underline'}}>{c}</a>);}
+          else parts.push(<InlineCode key={k++} content={c}/>);
+        } else if(m[0].startsWith('**')){
+          parts.push(<strong key={k++} style={{color:'var(--text-primary)',fontWeight:'var(--weight-semibold)'}}>{m[0].slice(2,-2)}</strong>);
+        }
+        last=m.index+m[0].length;
+      }
+      if(last<text.length) parts.push(text.slice(last));
+      return parts;
+    }
+
+    /* ── INSTRUCTIONS W/ SCREENSHOTS ── */
+    function InstructionsWithScreenshots({ text, screenshots=[], captions=[] }) {
+      if(!text) return null;
+      const lines=text.split('\n');
+      const steps=[]; let curNum=null,curLines=[];
+      lines.forEach(line=>{
+        const m=line.match(/^(\d+)\./);
+        if(m){
+          if(curNum!==null&&curLines.length) steps.push({num:curNum,lines:curLines});
+          curNum=parseInt(m[1]); curLines=[line];
+        } else if(curNum!==null&&line.trim()) curLines.push(line);
+      });
+      if(curNum!==null&&curLines.length) steps.push({num:curNum,lines:curLines});
+      if(!steps.length) return <div className="prose"><p>{renderInline(text)}</p></div>;
+      return (
+        <div style={{display:'flex',flexDirection:'column',gap:'var(--space-5)'}}>
+          {steps.map(step=>{
+            const cleanText=step.lines.join('\n').replace(/^\d+\.\s*/,'');
+            const img=screenshots[step.num-1], cap=captions[step.num-1];
+            return (
+              <div key={step.num} className="step-item">
+                <div className="step-item__row">
+                  <span className="li-num" style={{flexShrink:0,marginTop:2}}>{step.num}</span>
+                  <span style={{fontSize:'var(--text-base)',lineHeight:'var(--leading-relaxed)',color:'var(--text-secondary)'}}>{renderInline(cleanText)}</span>
+                </div>
+                {img && (
+                  <div className="step-img">
+                    <img src={img} alt={cap||'Шаг '+step.num} loading="lazy"/>
+                    {cap && <div className="step-img__cap">{cap}</div>}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
+
+    /* ── BUTTONS ── */
+    function Btn({variant='primary',size='md',iconLeft,iconRight,full,children,className='',...rest}){
+      const cls=['cds-btn',`cds-btn--${variant}`,size!=='md'?`cds-btn--${size}`:'',full?'cds-btn--full':'',className].filter(Boolean).join(' ');
+      return <button className={cls} {...rest}>{iconLeft}{children!=null&&<span>{children}</span>}{iconRight}</button>;
+    }
+    function IconBtn({children,variant='',className='',...rest}){
+      const cls=['cds-icon-btn',variant?`cds-icon-btn--${variant}`:'',className].filter(Boolean).join(' ');
+      return <button className={cls} {...rest}>{children}</button>;
+    }
+
+    /* ── MODAL ── */
+    function Modal({title,sub,onClose,children,wide}){
+      useEffect(()=>{
+        const h=e=>{if(e.key==='Escape')onClose();};
+        window.addEventListener('keydown',h);return()=>window.removeEventListener('keydown',h);
+      },[onClose]);
+      return (
+        <div className="overlay" onMouseDown={e=>{if(e.target===e.currentTarget)onClose();}}>
+          <div className={'modal'+(wide?' modal--wide':'')} role="dialog" aria-modal="true">
+            <div className="modal__head">
+              <div className="modal__head-body">
+                <div className="modal__title">{title}</div>
+                {sub&&<div className="modal__sub">{sub}</div>}
+              </div>
+              <IconBtn className="modal__x" onClick={onClose} aria-label="Закрыть">{I.x}</IconBtn>
+            </div>
+            <div className="modal__body">{children}</div>
+          </div>
+        </div>
+      );
+    }
+
+    /* ── TOAST ── */
+    function useToast(){
+      const [msg,setMsg]=useState(null);
+      const show=useCallback(m=>{setMsg(m);clearTimeout(window.__tt);window.__tt=setTimeout(()=>setMsg(null),2200);},[]);
+      return [msg?<div className="toast">{I.checkBold}{msg}</div>:null, show];
+    }
+
+    /* ── FIELD ── */
+    function Field({label,hint,multiline,rows=3,...rest}){
+      return(
+        <label className="cds-field">
+          {label&&<span className="cds-label">{label}{hint&&<span className="cds-label__hint">{hint}</span>}</span>}
+          {multiline?<textarea className="cds-textarea" rows={rows} {...rest}/>:<input className="cds-input" {...rest}/>}
+        </label>
+      );
+    }
+
+    /* ── CLAUDE MARK SVG ── */
+    const ClaudeMark = ({style,className}) => (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" style={style} className={className} aria-label="Claude">
+        <g stroke="#D97757" strokeWidth="8.6" strokeLinecap="round">
+          {[0,30,60,90,120,150,180,210,240,270,300,330].map((deg,i)=>(
+            <line key={i} x1="60" y1={i%2===0?19:26} x2="60" y2="48" transform={`rotate(${deg} 60 60)`}/>
+          ))}
+        </g>
+      </svg>
+    );
+
+    const CURATOR = {telegram:'@vibecoding_kurator',email:'kurator@school.ru'};
+
+    /* ── OS PICKER ── */
+    function OsPicker({onPick}){
+      return(
+        <div className="picker">
+          <div className="picker__inner">
+            <ClaudeMark style={{width:52,height:52,display:'block',margin:'0 auto'}} />
+            <div style={{height:'var(--space-6)'}}/>
+            <div className="picker__eyebrow">Подготовка к обучению</div>
+            <h1 className="picker__title">Настроим ваш компьютер<br/>перед первым занятием</h1>
+            <p className="picker__lede">Пройдём вместе 8 коротких шагов — установим программы и заведём аккаунты, чтобы на уроке сразу начать кодить. Для начала выберите вашу систему.</p>
+            <div className="picker__cards">
+              {Object.values(OS).map(os=>(
+                <button key={os.id} className="oscard" onClick={()=>onPick(os.id)}>
+                  <span className="oscard__ic">{os.icon}</span>
+                  <span className="oscard__name">{os.name}</span>
+                  <span className="oscard__sub">{os.id==='win'?'ПК и ноутбуки на Windows':'MacBook, iMac, Mac mini'}</span>
+                </button>
+              ))}
+            </div>
+            <p className="picker__foot">Систему можно будет поменять в любой момент в шапке сайта.</p>
+          </div>
+        </div>
+      );
+    }
+
+    /* ── TOP BAR ── */
+    function TopBar({os,setOs,pct,doneCount,total,onFaq,admin,setAdmin,onReset}){
+      return(
+        <header className="topbar">
+          <div className="topbar__inner">
+            <div className="brand">
+              <ClaudeMark style={{width:30,height:30,display:'block',flexShrink:0}}/>
+              <div className="brand__name">Подготовка <span>· вайбкодинг</span></div>
+            </div>
+            <div className="topbar__progress">
+              <div className="miniprog"><div className="miniprog__fill" style={{width:pct+'%'}}/></div>
+              <div className="miniprog__label">{pct}% · {doneCount}/{total}</div>
+            </div>
+            <div className="topbar__actions">
+              <div className="osseg" role="group" aria-label="Операционная система">
+                {Object.values(OS).map(o=>(
+                  <button key={o.id} className="osseg__btn" aria-pressed={os===o.id} onClick={()=>setOs(o.id)}>
+                    {o.icon}{o.name}
+                  </button>
+                ))}
+              </div>
+              <Btn variant="ghost" size="sm" iconLeft={I.help} onClick={onFaq}>Частые проблемы</Btn>
+              <IconBtn variant={admin?'solid':''} onClick={()=>setAdmin(a=>!a)} title="Режим администратора">{I.gear}</IconBtn>
+              <IconBtn onClick={onReset} title="Сбросить прогресс">{I.reset}</IconBtn>
+            </div>
+          </div>
+        </header>
+      );
+    }
+
+    /* ── STEPPER ── */
+    function Stepper({steps,current,setCurrent,done,allDone}){
+      return(
+        <nav className="stepper">
+          <div className="stepper__head"><div className="stepper__title">Шаги подготовки</div></div>
+          {steps.map((s,i)=>(
+            <button key={s.id} className="steprow" aria-current={current===i} data-done={!!done[s.id]} onClick={()=>setCurrent(i)}>
+              <span className="steprow__dot">{done[s.id]?I.check:s.num}</span>
+              <span className="steprow__body">
+                <span className="steprow__label">{s.title}</span>
+                <span className="steprow__meta">{done[s.id]?'Выполнено':'Шаг '+s.num}</span>
+              </span>
+            </button>
+          ))}
+          <button className="steprow steprow--final" aria-current={current===steps.length} data-ready={allDone} onClick={()=>setCurrent(steps.length)}>
+            <span className="steprow__dot">{allDone?I.check:I.trophy}</span>
+            <span className="steprow__body">
+              <span className="steprow__label">Финальная проверка</span>
+              <span className="steprow__meta">{allDone?'Готов к обучению':'Чек-лист готовности'}</span>
+            </span>
+          </button>
+        </nav>
+      );
+    }
+
+    /* ── ADMIN EDIT ── */
+    function AdminEdit({step,os,overrides,setOverrides}){
+      const key=f=>step.perOS?`${f}.${os}`:f;
+      const get=f=>resolve(step,f,os,overrides);
+      const set=(f,val)=>setOverrides(p=>({...p,[step.id]:{...(p[step.id]||{}),[key(f)]:val}}));
+      const links=get('links')||[];
+      return(
+        <div className="editzone">
+          <div className="editzone__label">{I.edit} Редактирование · {step.perOS?OS[os].name:'все системы'}</div>
+          <Field label="Текст инструкции" multiline rows={6} value={get('instructions')||''} onChange={e=>set('instructions',e.target.value)}/>
+          <div>
+            <div className="cds-label" style={{marginBottom:8}}>Кнопки-ссылки</div>
+            <div style={{display:'flex',flexDirection:'column',gap:8}}>
+              {links.map((l,idx)=>(
+                <div className="linkedit" key={idx}>
+                  <input className="cds-input" placeholder="Текст" value={l.label} onChange={e=>set('links',links.map((x,i)=>i===idx?{...x,label:e.target.value}:x))} style={{maxWidth:180}}/>
+                  <input className="cds-input" placeholder="https://…" value={l.url} onChange={e=>set('links',links.map((x,i)=>i===idx?{...x,url:e.target.value}:x))}/>
+                  <IconBtn onClick={()=>set('links',links.filter((_,i)=>i!==idx))}>{I.x}</IconBtn>
+                </div>
+              ))}
+              <Btn variant="secondary" size="sm" onClick={()=>set('links',[...links,{label:'Новая ссылка',url:'',primary:links.length===0}])}>+ Добавить кнопку</Btn>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    /* ── STEP VIEW ── */
+    function StepView({step,os,overrides,setOverrides,admin,done,toggleDone,onPrev,onNext,isFirst,onHelp}){
+      const instructions=resolve(step,'instructions',os,overrides);
+      const links=resolve(step,'links',os,overrides)||[];
+      const screenshots=(step.perOS?pick(step.screenshots,os):step.screenshots)||[];
+      const captions=(step.perOS?pick(step.screenshotCaptions,os):step.screenshotCaptions)||[];
+      const isDone=!!done[step.id];
+      return(
+        <article className="stepcard">
+          <div className="stepcard__head">
+            <div className="stepcard__eyebrow">
+              <span className="eyebrow-num">Шаг {step.num} из {STEPS.length-1}</span>
+              {step.perOS&&<span className="cds-badge cds-badge--neutral">{OS[os].icon}{OS[os].name}</span>}
+              {isDone&&<span className="cds-badge cds-badge--success">{I.check} Выполнено</span>}
+            </div>
+            <h1 className="stepcard__title">{step.title}</h1>
+            <p className="stepcard__lede">{step.lede}</p>
+          </div>
+          <div className="stepcard__body">
+            {instructions&&(
+              <div>
+                <div className="block-label">Инструкция</div>
+                <InstructionsWithScreenshots text={instructions} screenshots={screenshots} captions={captions}/>
+              </div>
+            )}
+            {admin&&<AdminEdit step={step} os={os} overrides={overrides} setOverrides={setOverrides}/>}
+            {isDone&&<div className="donebar">{I.checkBold} Этот шаг отмечен как выполненный. Можно переходить дальше.</div>}
+            <div className="actions">
+              {links.filter(l=>l.url||admin).map((l,i)=>(
+                <Btn key={i} variant={l.primary?'primary':'secondary'} iconRight={I.external}
+                  onClick={()=>l.url&&window.open(l.url,'_blank','noopener')} disabled={!l.url}>
+                  {l.label}
+                </Btn>
+              ))}
+              <span className="actions__spacer"/>
+              <Btn variant={isDone?'secondary':'primary'} iconLeft={isDone?I.reset:I.check} onClick={()=>toggleDone(step.id)}>
+                {isDone?'Отменить выполнение':'Шаг выполнен'}
+              </Btn>
+            </div>
+          </div>
+          <div className="cardfoot">
+            <button className="helplink" onClick={()=>onHelp(step)}>{I.help} Не получается, нужна помощь</button>
+            <div className="cardfoot__nav">
+              <Btn variant="ghost" iconLeft={I.arrowL} onClick={onPrev} disabled={isFirst}>Назад</Btn>
+              <Btn variant="secondary" iconRight={I.arrowR} onClick={onNext}>Далее</Btn>
+            </div>
+          </div>
+        </article>
+      );
+    }
+
+    /* ── FINAL VIEW ── */
+    function FinalView({steps,done,allDone,onReset,goStep}){
+      const doneCount=steps.filter(s=>done[s.id]).length;
+      return(
+        <article className="stepcard">
+          <div className="stepcard__head">
+            <div className="stepcard__eyebrow"><span className="eyebrow-num">Финальная проверка</span></div>
+            <h1 className="stepcard__title">Готовность к обучению</h1>
+            <p className="stepcard__lede">Проверьте, что все пункты отмечены. Когда чек-лист заполнен — вы полностью готовы к первому занятию.</p>
+          </div>
+          <div className="stepcard__body">
+            <div className="finalwrap">
+              <div className={'readybanner'+(allDone?'':' readybanner--locked')}>
+                <div className="readybanner__ic">{allDone?I.trophy:I.lock}</div>
+                <div>
+                  <div className="readybanner__title">{allDone?'Готов к обучению':'Почти готово'}</div>
+                  <div className="readybanner__text">{allDone
+                    ?'Все шаги выполнены. Можно приходить на занятие — рабочее окружение настроено.'
+                    :`Выполнено ${doneCount} из ${steps.length} шагов. Отметьте оставшиеся пункты, чтобы завершить подготовку.`}</div>
+                </div>
+              </div>
+              <div>
+                <div className="block-label">Чек-лист готовности</div>
+                <div className="checklist">
+                  {steps.map((s,i)=>(
+                    <button className="checkitem" key={s.id} data-done={!!done[s.id]} onClick={()=>goStep(i)}>
+                      <span className="checkitem__ic">{done[s.id]?I.check:''}</span>
+                      <span className="checkitem__label">{s.check}</span>
+                      {!done[s.id]&&<span className="checkitem__sub">шаг {s.num}</span>}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className="actions">
+                <Btn variant="ghost" iconLeft={I.reset} onClick={onReset}>Пройти заново</Btn>
+                <span className="actions__spacer"/>
+                {!allDone&&<Btn variant="primary" onClick={()=>{const i=steps.findIndex(s=>!done[s.id]);goStep(i<0?0:i);}}>Перейти к незавершённому</Btn>}
+              </div>
+            </div>
+          </div>
+        </article>
+      );
+    }
+
+    /* ── FAQ MODAL ── */
+    function FaqModal({onClose,onHelp}){
+      const [open,setOpen]=useState(0);
+      return(
+        <Modal title="Частые проблемы" sub="Быстрые решения для типичных ситуаций при подготовке" onClose={onClose} wide>
+          <div className="faqlist">
+            {FAQ.map((f,i)=>(
+              <div className="faqitem" key={i} data-open={open===i}>
+                <button className="faqitem__q" onClick={()=>setOpen(open===i?-1:i)}>
+                  <span className="qic">?</span>{f.q}<span className="chev">{I.chev}</span>
+                </button>
+                {open===i&&<div className="faqitem__a">{f.a}</div>}
+              </div>
+            ))}
+          </div>
+          <div className="modal__foot">
+            <Btn variant="secondary" onClick={()=>{onClose();onHelp(null);}}>Моей проблемы нет — написать куратору</Btn>
+          </div>
+        </Modal>
+      );
+    }
+
+    /* ── HELP MODAL ── */
+    function HelpModal({step,os,onClose}){
+      const [sent,setSent]=useState(false);
+      const [form,setForm]=useState({name:'',contact:'',message:''});
+      const upd=k=>e=>setForm(f=>({...f,[k]:e.target.value}));
+      if(sent) return(
+        <Modal title="Обращение отправлено" onClose={onClose}>
+          <div className="donebar" style={{fontSize:'var(--text-base)'}}>{I.checkBold} Куратор получит ваше сообщение и свяжется с вами.</div>
+          <p style={{fontSize:'var(--text-sm)',color:'var(--text-secondary)',marginTop:'var(--space-4)'}}>Если вопрос срочный: <strong>{CURATOR.telegram}</strong> или <strong>{CURATOR.email}</strong></p>
+          <div className="modal__foot"><Btn onClick={onClose}>Понятно</Btn></div>
+        </Modal>
+      );
+      return(
+        <Modal title="Нужна помощь куратора" sub={step?`Шаг ${step.num}: ${step.title}`:'Общий вопрос по подготовке'} onClose={onClose}>
+          <form onSubmit={e=>{e.preventDefault();setSent(true);}} style={{display:'flex',flexDirection:'column',gap:'var(--space-5)'}}>
+            <Field label="Как к вам обращаться" placeholder="Имя" value={form.name} onChange={upd('name')} required/>
+            <Field label="Контакт для ответа" hint="Telegram или почта" placeholder="@username или mail@example.com" value={form.contact} onChange={upd('contact')} required/>
+            <Field label="В чём затруднение" multiline rows={4} placeholder="Опишите, что не получается, и что вы уже пробовали…" value={form.message} onChange={upd('message')} required/>
+            <div className="hint-inline">Система: {OS[os].name}{step?` · автоматически приложим, что вы на шаге ${step.num}`:''}</div>
+            <div className="modal__foot">
+              <Btn variant="ghost" type="button" onClick={onClose}>Отмена</Btn>
+              <Btn variant="primary" type="submit" iconRight={I.send}>Отправить куратору</Btn>
+            </div>
+          </form>
+        </Modal>
+      );
+    }
+
+    /* ── ROOT APP ── */
+    function App(){
+      const [os,setOsState]=useState(()=>load(LS.os,null));
+      const [done,setDone]=useState(()=>load(LS.done,{}));
+      const [overrides,setOverrides]=useState(()=>load(LS.overrides,{}));
+      const [admin,setAdmin]=useState(()=>load(LS.admin,false));
+      const [current,setCurrent]=useState(0);
+      const [faqOpen,setFaqOpen]=useState(false);
+      const [helpStep,setHelpStep]=useState(undefined);
+      const [toastNode,toast]=useToast();
+
+      useEffect(()=>{save(LS.done,done);},[done]);
+      useEffect(()=>{save(LS.overrides,overrides);},[overrides]);
+      useEffect(()=>{save(LS.admin,admin);},[admin]);
+      useEffect(()=>{window.scrollTo({top:0,behavior:'smooth'});},[current]);
+
+      const setOs=v=>{setOsState(v);save(LS.os,v);};
+      const total=STEPS.length;
+      const doneCount=STEPS.filter(s=>done[s.id]).length;
+      const pct=Math.round((doneCount/total)*100);
+      const allDone=doneCount===total;
+
+      const toggleDone=id=>{
+        setDone(prev=>{const next={...prev,[id]:!prev[id]};return next;});
+        if(!done[id]){
+          toast('Шаг отмечен выполненным');
+          setTimeout(()=>setCurrent(c=>c<total-1?c+1:total),450);
+        }
+      };
+
+      const resetAll=()=>{
+        if(confirm('Сбросить весь прогресс и пройти подготовку заново? Установленные программы удалять не нужно.')){
+          setDone({});setCurrent(0);toast('Прогресс сброшен');
+        }
+      };
+
+      if(!os) return <>{<OsPicker onPick={setOs}/>}{toastNode}</>;
+
+      const onFinal=current>=total;
+      const step=STEPS[current];
+
+      return(
+        <div className="app">
+          {admin&&(
+            <div className="adminbar">
+              <div className="adminbar__inner">
+                <span className="adminbar__dot"/>
+                <span className="adminbar__title">Режим администратора</span>
+                <span className="adminbar__hint">Меняйте ссылки и тексты — всё сохраняется в этом браузере</span>
+                <span className="adminbar__spacer"/>
+                <Btn variant="ghost" size="sm" onClick={()=>{if(confirm('Сбросить все правки?')){setOverrides({});toast('Контент сброшен');}}}>Сбросить правки</Btn>
+                <Btn variant="ghost" size="sm" iconLeft={I.x} onClick={()=>setAdmin(false)}>Выйти</Btn>
+              </div>
+            </div>
+          )}
+          <TopBar os={os} setOs={setOs} pct={pct} doneCount={doneCount} total={total}
+            onFaq={()=>setFaqOpen(true)} admin={admin} setAdmin={setAdmin} onReset={resetAll}/>
+          <div className="layout">
+            <Stepper steps={STEPS} current={current} setCurrent={setCurrent} done={done} allDone={allDone}/>
+            <main className="main">
+              {onFinal
+                ?<FinalView steps={STEPS} done={done} allDone={allDone} onReset={resetAll} goStep={setCurrent}/>
+                :<StepView step={step} os={os} overrides={overrides} setOverrides={setOverrides} admin={admin}
+                    done={done} toggleDone={toggleDone}
+                    onPrev={()=>setCurrent(c=>Math.max(0,c-1))}
+                    onNext={()=>setCurrent(c=>Math.min(total,c+1))}
+                    isFirst={current===0} onHelp={s=>setHelpStep(s)}/>
+              }
+            </main>
+          </div>
+          {faqOpen&&<FaqModal onClose={()=>setFaqOpen(false)} onHelp={s=>setHelpStep(s)}/>}
+          {helpStep!==undefined&&<HelpModal step={helpStep} os={os} onClose={()=>setHelpStep(undefined)}/>}
+          {toastNode}
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+  </script>
+</body>
+</html>
