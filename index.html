@@ -313,6 +313,59 @@
     .oscard__sub{font-size:var(--text-sm);color:var(--text-muted)}
     .picker__foot{margin-top:var(--space-7);font-size:var(--text-sm);color:var(--text-muted)}
     .hint-inline{font-size:var(--text-xs);color:var(--text-muted)}
+
+    /* ── MOBILE ── */
+    @media(max-width:640px){
+      /* Topbar: 2 rows */
+      .topbar__inner{flex-wrap:wrap;height:auto;padding:10px 16px 8px;gap:6px}
+      .brand{flex:1}
+      .brand__name span{display:none}
+      .topbar__progress{order:3;width:100%;max-width:none;flex:none;padding-bottom:2px}
+      .topbar__actions{gap:2px}
+      .osseg__name{display:none}
+      .osseg__btn{padding:6px 10px}
+      .faq-label{display:none}
+
+      /* Layout */
+      .layout{padding:12px 12px 48px;gap:12px}
+
+      /* Stepper → horizontal scrollable dots */
+      .stepper{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;
+        scrollbar-width:none;gap:2px;padding:4px 2px;top:auto}
+      .stepper::-webkit-scrollbar{display:none}
+      .stepper__head{display:none}
+      .steprow{padding:4px;flex:none;width:34px;height:34px;justify-content:center;border-radius:50%}
+      .steprow[aria-current="true"]::before{display:none}
+      .steprow[aria-current="true"]{background:var(--accent-subtle);outline:2px solid var(--accent);outline-offset:1px}
+      .steprow__body{display:none}
+
+      /* stepcard */
+      .stepcard{border-radius:var(--radius-lg)}
+      .stepcard__head{padding:20px 16px 14px}
+      .stepcard__title{font-size:var(--text-2xl)}
+      .stepcard__lede{font-size:var(--text-base);margin-top:10px}
+      .stepcard__body{padding:0 16px 20px;gap:20px}
+
+      /* cardfoot */
+      .cardfoot{padding:12px 16px;flex-wrap:wrap;gap:10px}
+      .cardfoot__nav{width:100%;justify-content:flex-end}
+      .helplink{font-size:var(--text-xs)}
+
+      /* Picker */
+      .picker{padding:24px 16px}
+      .picker__title{font-size:var(--text-3xl)}
+      .picker__lede{font-size:var(--text-base)}
+      .picker__cards{margin-top:32px;gap:12px}
+      .oscard{padding:24px 20px;flex-direction:row;justify-content:flex-start;text-align:left}
+      .oscard__ic{width:40px;height:40px;flex:none}
+      .oscard__name{font-size:var(--text-md)}
+
+      /* Final */
+      .readybanner{flex-direction:column;gap:16px}
+      .readybanner__ic{width:44px;height:44px}
+      .readybanner__ic svg{width:22px;height:22px}
+      .readybanner__title{font-size:var(--text-xl)}
+    }
   </style>
 </head>
 <body>
@@ -673,11 +726,11 @@
               <div className="osseg" role="group" aria-label="Операционная система">
                 {Object.values(OS).map(o=>(
                   <button key={o.id} className="osseg__btn" aria-pressed={os===o.id} onClick={()=>setOs(o.id)}>
-                    {o.icon}{o.name}
+                    {o.icon}<span className="osseg__name">{o.name}</span>
                   </button>
                 ))}
               </div>
-              <Btn variant="ghost" size="sm" iconLeft={I.help} onClick={onFaq}>Частые проблемы</Btn>
+              <Btn variant="ghost" size="sm" iconLeft={I.help} onClick={onFaq}><span className="faq-label">Частые проблемы</span></Btn>
               <IconBtn onClick={onReset} title="Сбросить прогресс">{I.reset}</IconBtn>
             </div>
           </div>
