@@ -469,48 +469,6 @@
         screenshotCaptions:['Нажми «Sign up» в правом верхнем углу','Форма регистрации — выбери «Continue with Google»','Выбери свой Google-аккаунт','Введи email и нажми «Далее»','Введи пароль и нажми «Далее»','Разреши GitHub доступ — нажми «Продолжить»','Введи username латиницей без пробелов','Нажми «Visual puzzle» для начала проверки','Выбери правильную картинку с помощью стрелок и нажми «Submit»','Продолжай паззл до конца — нажимай «Submit» на каждом шаге','Готово! Ты на Dashboard GitHub'],
         links:[{label:'Перейти на GitHub',url:'https://github.com/signup',primary:true}],
       },
-      {
-        id:'token', num:5, perOS:false, icon:I.key,
-        title:'Создаём GitHub токен для Claude',
-        check:'GitHub Token',
-        lede:'Токен — это специальный пароль, который ты дашь Claude, чтобы он мог сохранять проекты на GitHub. Без токена Claude не сможет загружать код.',
-        instructions:'1. Нажми на аватар (фото профиля) в правом верхнем углу GitHub. В меню выбери «Settings». Прокрути вниз до «Developer settings» (последний пункт в левом меню) → Personal access tokens → Tokens (classic) → Generate new token → Generate new token (classic).\n2. В поле «Note» введи название: `Claude`. В поле «Expiration» выбери «No expiration» — чтобы токен не истёк в неподходящий момент.\n3. Прокрути страницу вниз. Поставь галочку напротив «repo» — этого достаточно. Нажми зелёную кнопку «Generate token» внизу.\n4. Токен показывается ОДИН РАЗ! Скопируй его прямо сейчас — нажми кнопку копирования рядом с токеном. Сохрани токен в текстовом файле в папке GrowVibeProjects. Если закроешь страницу — придётся создавать новый.',
-        screenshots:['images/token-01-settings.png','images/token-02-name.png','images/token-03-repo.png','images/token-04-copy.png'],
-        screenshotCaptions:['Аватар → Settings → Developer settings → Tokens (classic) → Generate new token (classic)','Назови токен «Claude» и выбери «No expiration»','Отметь галочку «repo» и нажми «Generate token»','Скопируй токен сразу — он показывается только один раз!'],
-        links:[{label:'Открыть настройки токенов',url:'https://github.com/settings/tokens',primary:true}],
-      },
-      {
-        id:'token-desktop', num:6, perOS:false, icon:I.sparkle,
-        title:'Вставляем токен в Claude Desktop',
-        check:'GitHub токен в Claude',
-        lede:'Теперь нужно сказать Claude, какой у тебя GitHub-аккаунт. Для этого вставим токен прямо в чат.',
-        instructions:'1. Запусти приложение Claude Desktop (иконка в Launchpad, папке Программы или на рабочем столе). Открой папку GrowVibeProjects в Claude — нажми «Open Folder» или перетащи папку в окно Claude.\n2. В чате напиши следующее сообщение (вставь свой токен и логин вместо слов в скобках):\n\n`Привет! Вот мой GitHub токен: ВАШ_ТОКЕН Мой GitHub логин: ВАШ_ЛОГИН Запомни эти данные для работы.`\n\nClaude запомнит токен в рамках текущей сессии. Если откроешь новый чат — нужно будет вставить снова.\n3. Попроси Claude проверить соединение: `Проверь подключение к моему GitHub-аккаунту.` Если Claude ответит информацией о твоём аккаунте — всё работает.',
-        screenshots:[],
-        screenshotCaptions:[],
-        links:[],
-      },
-      {
-        id:'git', num:7, perOS:true, icon:I.download,
-        title:'Проверяем и устанавливаем Git',
-        check:'Git',
-        lede:'Git — система управления версиями. На Windows скачиваем, на macOS через Homebrew.',
-        instructions:{
-          win:'1. Нажми Win+R → введи `cmd` → нажми Enter. Откроется чёрное окно с курсором — это командная строка.\n2. Введи команду `git --version` и нажми Enter. Если видишь версию (например, `git version 2.x.x`) — Git уже установлен, шаги 3–5 пропускай!\n3. Если видишь ошибку `\'git\' is not recognized` — перейди на `git-scm.com` и нажми большую кнопку «Download for Windows». Скачается файл вида `Git-2.x.x-64-bit.exe` — открой его из папки Загрузки.\n4. Запустится мастер установки. На всех экранах просто нажимай «Next», ничего не меняй. В конце нажми «Finish». Установка займёт 1–2 минуты.\n5. Закрой командную строку и открой снова (Win+R → `cmd` → Enter). Введи `git --version` — должна появиться версия. Git установлен!',
-          mac:'1. Открой Терминал: нажми Cmd+Пробел → напиши «Terminal» → нажми Enter. Откроется тёмное окно с курсором.\n2. Для установки Git нам понадобится Homebrew. Открой [brew.sh](https://brew.sh/ru/) в браузере — скопируй команду установки, нажав иконку справа от неё.\n3. Вернись в Терминал. Вставь команду (Cmd+V) и нажми Enter.\n4. Терминал попросит пароль от твоего Mac. Введи его вслепую (символы не отображаются — это нормально!) и нажми Enter.\n5. Началась установка Homebrew — ждём 2–5 минут. Строки бегут — это нормально. Когда появится «Installation successful!» — готово.\n6. Теперь введи команду `brew install git` в Терминале и нажми Enter.\n7. Git устанавливается — дождись завершения (1–2 минуты).\n8. Готово! Проверь командой `git --version` — должна появиться версия.',
-        },
-        screenshots:{
-          win:[],
-          mac:['images/git-mac-01-terminal.png','images/git-mac-02-brew.png','images/git-mac-03-paste.png','images/git-mac-04-password.png','images/git-mac-05-installing.png','images/git-mac-06-brew-git1.png','images/git-mac-07-brew-git2.png','images/git-mac-08-installed.png'],
-        },
-        screenshotCaptions:{
-          win:[],
-          mac:['Открытый Терминал — тёмное окно с курсором','brew.sh — скопируй команду установки Homebrew','Вставь команду в Терминал (Cmd+V) и нажми Enter','Введи пароль от Mac вслепую и нажми Enter','Homebrew устанавливается — жди «Installation successful!»','Введи brew install git и нажми Enter','Git устанавливается — дождись завершения','Git успешно установлен!'],
-        },
-        links:{
-          win:[{label:'Скачать Git для Windows',url:'https://git-scm.com/download/win',primary:true}],
-          mac:[{label:'Homebrew (brew.sh)',url:'https://brew.sh/ru/',primary:true}],
-        },
-      },
     ];
 
     const FAQ = [
@@ -518,7 +476,6 @@
       {q:'Не проходит оплата Claude',a:'Убедитесь, что карта поддерживает международные платежи. Попробуйте другую карту или позже.'},
       {q:'Windows не даёт установить программу («неизвестный издатель»)',a:'Нажмите «Подробнее» → «Выполнить в любом случае». Скачивайте только по ссылкам из этого мастера.'},
       {q:'macOS пишет, что приложение нельзя открыть',a:'Откройте «Системные настройки → Конфиденциальность и безопасность» и нажмите «Открыть всё равно».'},
-      {q:'Я потерял GitHub токен',a:'Токен показывается один раз. Создайте новый (шаг 5) и удалите старый.'},
       {q:'Я сбросил прогресс',a:'Прогресс хранится в браузере. Отметьте шаги заново — программы переустанавливать не нужно.'},
     ];
 
